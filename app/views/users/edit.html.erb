@@ -1,0 +1,29 @@
+<h1>Edit User</h1>
+<%= form_with model: @user do | form | %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do | msg | %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, placeholder:"John Doe" %>
+  </div>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email, placeholder:"example@example.com" %>
+  </div>
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+  <div class="actions">
+    <%= form.submit "Update User" %>
+  </div>
+<% end %>
